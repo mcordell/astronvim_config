@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -45,25 +43,61 @@ return {
       -- first key is the mode
       n = {
         -- second key is the lefthand side of the map
-
-        -- navigate buffer tabs with `H` and `L`
-        L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-
         -- mappings seen under group name "Buffer"
-        ["<Leader>bD"] = {
+        ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+        ["<leader>bD"] = {
           function()
-            require("astroui.status.heirline").buffer_picker(
-              function(bufnr) require("astrocore.buffer").close(bufnr) end
-            )
+            require("astronvim.utils.status").heirline.buffer_picker(function(bufnr)
+              require("astronvim.utils.buffer").close(
+                bufnr)
+            end)
           end,
           desc = "Pick to close",
         },
-        -- tables with just a `desc` key will be registered with which-key if it's installed
+        [",a"] = {
+          function()
+            require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/user/LuaSnip/" })
+          end
+        },
+        -- tables with the `name` key will be registered with which-key if it's installed
         -- this is useful for naming menus
-        ["<Leader>b"] = { desc = "Buffers" },
+        ["<leader>b"] = { name = "Buffers" 
+        },
         -- quick save
-        -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+        ["<leader>fs"] = { ":w!<cr>", desc = "Save File" },
+        [",tt"] = {
+          function()
+            require("neotest").run.run(vim.fn.expand("%"))
+          end,
+          desc = "test file"
+        },
+        [",s"] = {
+          function()
+            require("neotest").run.run()
+          end,
+          desc = "test nearest"
+        },
+        [",l"] = {
+          function()
+            require("neotest").run.run_last()
+          end,
+          desc = "test last"
+        },
+        [",ts"] = {
+          function()
+            require("neotest").output_panel.toggle()
+          end,
+          desc = "test output"
+        },
+        [",,"] = { ":b#<cr>", desc = "last buffer" },
+      },
+      v = {
+        ["<leader>pe"] = {
+          function()
+            require("chatgpt").edit_with_instructions()
+          end,
+          desc = "Edit with instructions"
+        }
       },
       t = {
         -- setting a mapping to false will disable it

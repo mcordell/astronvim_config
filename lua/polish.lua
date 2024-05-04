@@ -16,3 +16,5 @@ vim.filetype.add {
     ["~/%.config/foo/.*"] = "fooscript",
   },
 }
+
+vim.opt.diffopt:append("vertical")
