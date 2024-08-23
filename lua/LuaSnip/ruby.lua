@@ -155,7 +155,7 @@ return {
     t("binding.irb")
   ),
   s(
-    { trig = ".map", desc = "map function", snippetType = "autosnippet", wordTrig = false },
+    { trig = ".map", desc = "map function", wordTrig = false },
     fmta(".map { |<>| <> }",
       {
         i(1, "obj"),
