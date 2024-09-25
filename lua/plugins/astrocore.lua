@@ -83,6 +83,12 @@ return {
           end,
           desc = "test last"
         },
+        [",td"] = {
+          function()
+            require("neotest").run.run({ strategy = "dap" })
+          end,
+          desc = "test debug"
+        },
         [",ts"] = {
           function()
             require("neotest").output_panel.toggle()
@@ -110,4 +116,3 @@ return {
     },
   },
 }
-
