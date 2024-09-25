@@ -27,6 +27,10 @@ return {
     lazy = false,
   },
   {
+    "tpope/vim-projectionist",
+    lazy = false,
+  },
+  {
     "L3MON4D3/LuaSnip",
     dependencies = { "rafamadriz/friendly-snippets" },
     opts = {
@@ -91,4 +95,3 @@ return {
     event = "VeryLazy",
   },
 }
-
