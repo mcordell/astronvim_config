@@ -89,6 +89,10 @@ return {
           end,
           desc = "test output"
         },
+        [",of"] = {
+          ":ObsidianQuickSwitch<CR>",
+          desc = "obsidian quick switch"
+        },
         [",,"] = { ":b#<cr>", desc = "last buffer" },
       },
       v = {
@@ -106,3 +110,4 @@ return {
     },
   },
 }
+

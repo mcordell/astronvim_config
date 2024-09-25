@@ -1,5 +1,5 @@
 return {
-  dir="~/code/lua/obsidian-bridge.nvim/",
+  "oflisback/obsidian-bridge.nvim",
   event = {
     "BufReadPre /Users/michael/Documents/Obsidian Vault/*.md",
     "BufNewFile /Users/michael/Documents/Obsidian Vault/*.md",

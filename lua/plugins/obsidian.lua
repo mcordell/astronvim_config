@@ -1,7 +1,6 @@
 return {
   "epwalsh/obsidian.nvim",
   version = "*",  -- recommended, use latest release instead of latest commit
-  lazy = true,
  -- ft = "markdown",
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   event = {
@@ -22,7 +21,8 @@ return {
       },
     },
   },
-  config = function()
-    vim.wo.conceallevel = 1
+  config = function(_, opts)
+    vim.wo.conceallevel = 2
+    require("obsidian").setup(opts)
   end
 }
