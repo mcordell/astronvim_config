@@ -41,7 +41,7 @@ return {
       -- add more custom luasnip configuration such as filetype extend or custom snippets
       local luasnip = require "luasnip"
       require("luasnip.loaders.from_vscode").load {
-        exclude = { "ruby", "markdown" },
+        exclude = { "ruby", "markdown", "elixir" },
       }
       require("luasnip.loaders.from_lua").load {
         paths = { "~/.config/nvim/lua/LuaSnip/" },
