@@ -166,4 +166,37 @@ return {
       i(2, "ModuleName"), -- Second placeholder for the module representing the associated records
     })
   ),
+  s(
+    { trig = "field", desc = "Ecto schema field", wordTrig = true },
+    fmt("field :{}, {} {}", {
+      i(1, "column_name"), -- First placeholder for the association name
+      i(2, "type"), -- Second placeholder for the module representing the associated records
+      i(0),
+    })
+  ),
+  s(
+    { trig = "live_routes", desc = "", wordTrig = true },
+    fmt(
+      [[
+      live "/{}/:id", {}Live.Show, :show
+      live "/{}/:id/show/edit", {}Live.Show, :edit
+
+      live "/{}", {}Live.Index, :index
+      live "/{}/new", {}Live.Index, :new
+      live "/{}/:id/edit", {}Live.Index, :edit
+        ]],
+      {
+        i(1, "base_route"), -- First placeholder for the association name
+        i(2, "module"), -- Second placeholder for the module representing the associated records
+        rep(1),
+        rep(2),
+        rep(1),
+        rep(2),
+        rep(1),
+        rep(2),
+        rep(1),
+        rep(2),
+      }
+    )
+  ),
 }
