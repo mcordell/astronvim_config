@@ -47,67 +47,64 @@ return {
         ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
         ["<leader>bD"] = {
           function()
-            require("astronvim.utils.status").heirline.buffer_picker(function(bufnr)
-              require("astronvim.utils.buffer").close(
-                bufnr)
-            end)
+            require("astronvim.utils.status").heirline.buffer_picker(
+              function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+            )
           end,
           desc = "Pick to close",
         },
-        [",a"] = {
+        ["<leader>ft"] = { "<cmd>Other test<cr>", desc = "find test" },
+        ["<Leader>fa"] = { "<cmd>Other<cr>", desc = "find alternate" },
+        ["<Leader>fv"] = {
           function()
-            require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/user/LuaSnip/" })
-          end
+            require("telescope.builtin").find_files {
+              prompt_title = "Config Files",
+              cwd = vim.fn.stdpath "config",
+              follow = true,
+            }
+          end,
+          desc = "Find AstroNvim config files",
+        },
+
+        [",a"] = {
+          function() require("luasnip.loaders.from_lua").load { paths = "~/.config/nvim/lua/user/LuaSnip/" } end,
         },
         -- tables with the `name` key will be registered with which-key if it's installed
         -- this is useful for naming menus
-        ["<leader>b"] = { name = "Buffers" 
-        },
+        ["<leader>b"] = { name = "Buffers" },
         -- quick save
         ["<leader>fs"] = { ":w!<cr>", desc = "Save File" },
         [",tt"] = {
-          function()
-            require("neotest").run.run(vim.fn.expand("%"))
-          end,
-          desc = "test file"
+          function() require("neotest").run.run(vim.fn.expand "%") end,
+          desc = "test file",
         },
         [",s"] = {
-          function()
-            require("neotest").run.run()
-          end,
-          desc = "test nearest"
+          function() require("neotest").run.run() end,
+          desc = "test nearest",
         },
         [",l"] = {
-          function()
-            require("neotest").run.run_last()
-          end,
-          desc = "test last"
+          function() require("neotest").run.run_last() end,
+          desc = "test last",
         },
         [",td"] = {
-          function()
-            require("neotest").run.run({ strategy = "dap" })
-          end,
-          desc = "test debug"
+          function() require("neotest").run.run { strategy = "dap" } end,
+          desc = "test debug",
         },
         [",ts"] = {
-          function()
-            require("neotest").output_panel.toggle()
-          end,
-          desc = "test output"
+          function() require("neotest").output_panel.toggle() end,
+          desc = "test output",
         },
         [",of"] = {
           ":ObsidianQuickSwitch<CR>",
-          desc = "obsidian quick switch"
+          desc = "obsidian quick switch",
         },
         [",,"] = { ":b#<cr>", desc = "last buffer" },
       },
       v = {
         ["<leader>pe"] = {
-          function()
-            require("chatgpt").edit_with_instructions()
-          end,
-          desc = "Edit with instructions"
-        }
+          function() require("chatgpt").edit_with_instructions() end,
+          desc = "Edit with instructions",
+        },
       },
       t = {
         -- setting a mapping to false will disable it

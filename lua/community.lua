@@ -11,5 +11,6 @@ return {
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.git.gitgraph-nvim" },
   { import = "astrocommunity.git.fugit2-nvim" },
+  { import = "astrocommunity.git.gitlinker-nvim" },
   -- import/override with your plugins folder
 }
