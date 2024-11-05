@@ -74,6 +74,7 @@ return {
         ["<leader>b"] = { name = "Buffers" },
         -- quick save
         ["<leader>fs"] = { ":w!<cr>", desc = "Save File" },
+        ["<leader>gc"] = { ":Git commit<cr>", desc = "commit" },
         [",tt"] = {
           function() require("neotest").run.run(vim.fn.expand "%") end,
           desc = "test file",
