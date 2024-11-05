@@ -90,10 +90,11 @@ return {
     "AndrewRadev/splitjoin.vim",
     event = "VeryLazy",
   },
+  { "echasnovski/mini.nvim", version = false },
   {
-    "rgroli/other.nvim",
+    "mcordell/other.nvim",
     event = "VeryLazy",
-    dir = "~/Code/lua/other.nvim",
+    branch = "add-phoenix",
     config = function()
       require("other-nvim").setup {
         mappings = {
