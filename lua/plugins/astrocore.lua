@@ -100,6 +100,12 @@ return {
           function() require("neotest").run.run { strategy = "dap" } end,
           desc = "test debug",
         },
+        [",to"] = {
+
+          function() require("neotest").output.open { enter = true } end,
+          desc = "test output",
+        },
+
         [",ts"] = {
           function() require("neotest").output_panel.toggle() end,
           desc = "test output",

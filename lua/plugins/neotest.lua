@@ -9,26 +9,29 @@ return {
     "jfpedroza/neotest-elixir",
     {
       "cpb/neotest-rspec",
-      branch = "cpb/update-dap-strategy"
+      branch = "cpb/update-dap-strategy",
     },
   },
   config = function()
-    require('neotest').setup({
+    require("neotest").setup {
       adapters = {
-        require("neotest-elixir"),
-        require("neotest-rspec"),
+        require "neotest-elixir",
+        require "neotest-rspec",
       },
-  status = { virtual_text = true },
-  output = { open_on_run = true },
-       quickfix = {
+      status = { virtual_text = true },
+      output = { enabled = true, open_on_run = true },
+      quickfix = {
         enabled = true,
-    open = function()
-        vim.cmd("copen")
-    end,
-  },
-    })
+        open = function() vim.cmd "copen" end,
+      },
+    }
 
     -- Optionally map a key to open quickfix for test results
-    vim.api.nvim_set_keymap("n", "<leader>tq", "<cmd>lua require('neotest.consumers.quickfix').open()<CR>", { noremap = true, silent = true })
-  end
+    vim.api.nvim_set_keymap(
+      "n",
+      "<leader>tq",
+      "<cmd>lua require('neotest.consumers.quickfix').open()<CR>",
+      { noremap = true, silent = true }
+    )
+  end,
 }
