@@ -121,6 +121,27 @@ local get_class_node = function(_args, _parent) return sn(nil, classNode) end
 
 return {
   s(
+    { trig = "at", desc = "alter table", wordTrig = true },
+    fmt(
+      [[
+      alter table(:{}) do
+        {}
+      end
+      ]],
+      {
+        i(1, "table_name"), -- First placeholder for the association name
+        i(0), -- Second placeholder for the module representing the associated records
+      }
+    )
+  ),
+  s(
+    { trig = "ac", desc = "alter table", wordTrig = true },
+    fmt("add(:{}, {})", {
+      i(1, "column_name"),
+      i(2, "type"),
+    })
+  ),
+  s(
     { trig = ">r", desc = "Pipe into reduce", snippetType = "autosnippet" },
     fmt("|> Enum.reduce({}, fn {}, acc -> {} end)", {
       i(1, "acc"),
@@ -178,11 +199,10 @@ return {
     { trig = "live_routes", desc = "", wordTrig = true },
     fmt(
       [[
-      live "/{}/:id", {}Live.Show, :show
-      live "/{}/:id/show/edit", {}Live.Show, :edit
-
       live "/{}", {}Live.Index, :index
       live "/{}/new", {}Live.Index, :new
+      live "/{}/:id", {}Live.Show, :show
+      live "/{}/:id/show/edit", {}Live.Show, :edit
       live "/{}/:id/edit", {}Live.Index, :edit
         ]],
       {
