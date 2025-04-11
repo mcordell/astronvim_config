@@ -6,7 +6,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.pack.elixir-phoenix" },
+  { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.programming-language-support.csv-vim" },
   { import = "astrocommunity.git.gitgraph-nvim" },
   { import = "astrocommunity.git.gitlinker-nvim" },
