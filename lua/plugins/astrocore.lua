@@ -22,7 +22,7 @@ return {
       large_buf = { size = 1024 * 500, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
+      diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
     },
@@ -50,7 +50,7 @@ return {
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
-        signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+        signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
       },
       g = { -- vim.g.<key>
@@ -66,16 +66,16 @@ return {
       n = {
         -- second key is the lefthand side of the map
         -- mappings seen under group name "Buffer"
-        ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-        ["<leader>bD"] = {
+        ["<Leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
+        ["<Leader>bd"] = {
           function()
-            require("astronvim.utils.status").heirline.buffer_picker(
-              function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+            require("astroui.status.heirline").buffer_picker(
+              function(bufnr) require("astrocore.buffer").close(bufnr) end
             )
           end,
-          desc = "Pick to close",
+          desc = "Close buffer from tabline",
         },
-        ["<leader>ft"] = { "<cmd>Other test<cr>", desc = "find test" },
+        ["<Leader>ft"] = { "<cmd>Other test<cr>", desc = "find test" },
         ["<Leader>fa"] = { "<cmd>Other<cr>", desc = "find alternate" },
         ["<Leader>fv"] = {
           function()
@@ -91,12 +91,13 @@ return {
         [",a"] = {
           function() require("luasnip.loaders.from_lua").load { paths = "~/.config/nvim/lua/user/LuaSnip/" } end,
         },
-        -- tables with the `name` key will be registered with which-key if it's installed
+
+        -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
-        ["<leader>b"] = { name = "Buffers" },
+        ["<Leader>b"] = { desc = "Buffers" },
         -- quick save
-        ["<leader>fs"] = { ":w!<cr>", desc = "Save File" },
-        ["<leader>gc"] = { ":Git commit<cr>", desc = "commit" },
+        ["<Leader>fs"] = { ":w!<cr>", desc = "Save File" },
+        ["<Leader>gc"] = { ":Git commit<cr>", desc = "commit" },
         [",tt"] = {
           function() require("neotest").run.run(vim.fn.expand "%") end,
           desc = "test file",
@@ -135,10 +136,9 @@ return {
           desc = "Edit with instructions",
         },
       },
-      t = {
-        -- setting a mapping to false will disable it
-        -- ["<esc>"] = false,
-      },
+
+      -- setting a mapping to false will disable it
+      -- ["<C-S>"] = false,
     },
   },
 }
