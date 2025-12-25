@@ -96,7 +96,6 @@ return {
     "AndrewRadev/splitjoin.vim",
     event = "VeryLazy",
   },
-  { "echasnovski/mini.nvim", version = false },
   {
     "mcordell/other.nvim",
     event = "VeryLazy",
