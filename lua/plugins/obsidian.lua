@@ -13,6 +13,7 @@ return {
         path = "~/Documents/Obsidian Vault/",
       },
     },
+    note_id_func = function(title) return title end,
   },
   config = function(_, opts)
     vim.wo.conceallevel = 2
