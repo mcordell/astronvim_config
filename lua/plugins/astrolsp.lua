@@ -91,6 +91,11 @@ return {
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+
+      -- ruby-lsp is managed by adam12/ruby-lsp.nvim (handles per-Ruby-version gem install)
+      ruby_lsp = false,
+      -- rubocop LSP is handled internally by ruby-lsp; running it separately causes duplicate diagnostics
+      rubocop = false,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
@@ -144,6 +149,10 @@ return {
           function() vim.lsp.buf.declaration() end,
           desc = "Declaration of current symbol",
           cond = "textDocument/declaration",
+        },
+        ["<Leader>lf"] = {
+          function() vim.lsp.buf.format() end,
+          desc = "Format buffer",
         },
         ["<Leader>uY"] = {
           function() require("astrolsp.toggles").buffer_semantic_tokens() end,
