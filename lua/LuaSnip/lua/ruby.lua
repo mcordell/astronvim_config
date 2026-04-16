@@ -128,23 +128,27 @@ return {
       rep(1),
     })
   ),
-  s(
-    { trig = "cfix", desc = "", snippetType = "autosnippet" },
-    t(", :with_clean_fixture")
-  ),
+  s({ trig = "cfix", desc = "", snippetType = "autosnippet" }, t ", :with_clean_fixture"),
   s(
     { trig = "icimm", desc = "", snippetType = "autosnippet" },
-    t({"include_context 'seeded inpatient admin questionnaire and measure set'", "include_context 'seeded immunization questionnaire and measure set'"})
+    t {
+      "include_context 'seeded inpatient admin questionnaire and measure set'",
+      "include_context 'seeded immunization questionnaire and measure set'",
+    }
   ),
   s(
     { trig = "iccat", desc = "", snippetType = "autosnippet" },
-    t({"include_context 'seeded outpatient admin questionnaire and measure set'", "include_context 'seeded cataracts questionnaire and measure set'"})
+    t {
+      "include_context 'seeded outpatient admin questionnaire and measure set'",
+      "include_context 'seeded cataracts questionnaire and measure set'",
+    }
   ),
   s(
     { trig = "ico", desc = "map function", wordTrig = false },
-    fmta("include_context 'seeded outpatient admin questionnaire and measure set'\ninclude_context 'seeded <> questionnaire and measure set'",
+    fmta(
+      "include_context 'seeded outpatient admin questionnaire and measure set'\ninclude_context 'seeded <> questionnaire and measure set'",
       {
-        i(0)
+        i(0),
       }
     )
   ),
