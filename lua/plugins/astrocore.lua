@@ -8,6 +8,17 @@ return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
   opts = {
+    treesitter = {
+      highlight = true,
+      indent = true,
+      auto_install = true,
+      ensure_installed = {
+        "lua",
+        "vim",
+        "elixir",
+        "heex",
+      },
+    },
     autocmds = {
       filetypestruff = {
         {
@@ -30,19 +41,6 @@ return {
     diagnostics = {
       virtual_text = true,
       underline = true,
-    },
-    -- passed to `vim.filetype.add`
-    filetypes = {
-      -- see `:h vim.filetype.add` for usage
-      extension = {
-        foo = "fooscript",
-      },
-      filename = {
-        [".foorc"] = "fooscript",
-      },
-      pattern = {
-        [".*/etc/foo/.*"] = "fooscript",
-      },
     },
     -- vim options can be configured here
     options = {
