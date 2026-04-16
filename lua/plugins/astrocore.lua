@@ -130,13 +130,6 @@ return {
         },
         [",,"] = { ":b#<cr>", desc = "last buffer" },
       },
-      v = {
-        ["<leader>pe"] = {
-          function() require("chatgpt").edit_with_instructions() end,
-          desc = "Edit with instructions",
-        },
-      },
-
       -- setting a mapping to false will disable it
       -- ["<C-S>"] = false,
     },

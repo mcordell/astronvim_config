@@ -78,21 +78,6 @@ return {
     event = "VeryLazy",
   },
   {
-    "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("chatgpt").setup {
-        api_key_cmd = "op read op://Personal/OpenAIAPI/credential --no-newline",
-        actions_paths = { "/Users/michael/.dotfiles/astronvim_user_config/plugins/actions.json" },
-      }
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-  },
-  {
     "AndrewRadev/splitjoin.vim",
     event = "VeryLazy",
   },
