@@ -38,9 +38,22 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"
+      "ruff",
+      "ty",
     },
     -- customize language server configuration passed to `vim.lsp.config`
     config = {
+      ruff = {
+        cmd = { ".venv/bin/ruff", "server" },
+      },
+      ty = {
+        cmd = { ".venv/bin/ty", "server" },
+        filetypes = { "python" },
+        root_markers = { "pyproject.toml", "setup.py", ".git" },
+        settings = {
+          ty = {},
+        },
+      },
       tailwindcss = {
         init_options = {
           userLanguages = {
