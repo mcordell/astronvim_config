@@ -40,6 +40,7 @@ return {
       -- "pyright"
       "ruff",
       "ty",
+      "ruby_lsp",
     },
     -- customize language server configuration passed to `vim.lsp.config`
     config = {
@@ -93,14 +94,19 @@ return {
           enableTestLenses = true,
         },
       },
+      ruby_lsp = {
+        cmd = { "mise", "exec", "--", "ruby-lsp" },
+        init_options = {
+          formatter = "rubocop",
+          linters = { "rubocop" },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
       -- ["*"] is the default handler; set a server name to false to disable it
       -- ["*"] = function(server) vim.lsp.enable(server) end
 
-      -- ruby-lsp is managed by adam12/ruby-lsp.nvim (handles per-Ruby-version gem install)
-      ruby_lsp = false,
       -- rubocop LSP is handled internally by ruby-lsp; running it separately causes duplicate diagnostics
       rubocop = false,
     },
